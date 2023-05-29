@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./hobby-table.component.css']
 })
 export class HobbyTableComponent {
-
+  hobbyList : string[] = ['Video Game', 'Table Tennis', 'Animate', 'Sci-Fi', 'Listening Music'];
 }
