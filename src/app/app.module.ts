@@ -14,7 +14,7 @@ import { HobbyTableComponent } from './hobby-table/hobby-table.component';
     AppComponent,
     //PageMainComponent,
     ContainerComponent,
-    MyProfileComponent,
+    MyProfileComponent, 
     HobbyTableComponent
   ],
   imports: [

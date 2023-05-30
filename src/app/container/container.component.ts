@@ -7,14 +7,14 @@ import { HobbyTableComponent } from '../hobby-table/hobby-table.component';
   styleUrls: ['./container.component.css']
 })
 export class ContainerComponent implements AfterContentInit {
-  @ContentChild(HobbyTableComponent)
-  hobbyTable: HobbyTableComponent = new
-    HobbyTableComponent;
-
+  @ContentChild(HobbyTableComponent) hobbyComponent!: HobbyTableComponent;
   isShown: boolean = true;
 
   ngAfterContentInit(): void {
-    this.hobbyTable.hobbyList[4] = 'Cycling';
+    if (this.hobbyComponent) {
+      this.hobbyComponent.hobbyList[0] = 'Video Game: Age of Empire';
+      this.hobbyComponent.printHobbyListInService();
+    }
   }
 
   toggle(): void {
