@@ -1,6 +1,7 @@
 <p>container work!</p>
-<app-my-profile  *ngIf="isShown"></app-my-profile><br>
+<ng-content select="app-my-profile" *ngIf="isShown"></ng-content><br>
 <ng-content></ng-content>
 <ng-content select="app-hobby-table"></ng-content>
 
-<button (click)="toggle()">Toggle Hide and Shown</button>
+<button (click)="hideOrShowProfile()">Hide/Shown My Profile</button>
+<button (click)="adddHobby()">Add a Hobby</button>

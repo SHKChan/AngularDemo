@@ -1,3 +1,44 @@
-<p>hobby-table works!</p>
+<p>hobby-table works!</p><br>
 
-<h2>{{hobbyList}}</h2>
+<div *ngIf="hobbyList.length > 0">
+    <h2>My Top 5 Hobbies</h2>
+    <!-- <ul>
+        <li *ngFor="let hobby of hobbyList">{{hobbyList}}</li>
+    </ul> -->
+    <table class="table">
+        <tr>
+            <th>Preference</th>
+            <th>Name</th>
+            <th>Example</th>
+            <th>Duration</th>
+            <th>Skill Lever</th>
+            <th>is Indoor</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let hobby of hobbyList;
+            let e = even; let o = odd; let i = index;" 
+            [ngClass]="{'even': e, 'odd': o}">
+            <td>{{i+1}}</td>
+            <!-- <td>{{e ? "Even" : "Odd"}}</td> -->
+            <td>{{hobby.name}}</td>
+            <td>{{hobby.example}}</td>
+            <td>{{hobby.duration | number:'1.1-1'}}</td>
+            <td>{{hobby.skillLevel}}</td>
+            <td>{{hobby.isIndoor}}</td>
+            <td><button class="btn btn-primary" 
+                (click)="selectedHobby(i)">
+                Select
+            </button></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="text" placeholder="Enter Name" [(ngModel)]="name"></td>
+            <td><input type="text" placeholder="Enter Example" [(ngModel)]="example"></td>
+            <td><input type="text" placeholder="Enter Duration" [(ngModel)]="duration"></td>
+            <td><input type="text" placeholder="Enter Skill Lever" [(ngModel)]="skillLevel"></td>
+            <td><input type="text" placeholder="Enter is Indoor" [(ngModel)]="isIndoor"></td>
+        </tr>
+    </table>
+</div><br>
+
+<p *ngIf="hobbyList.length === 0">No hobbies found.</p>

@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { hobby } from 'services/hobby';
 import { MyHobbyServiceService } from 'services/my-hobby-service.service';
 
 @Component({
@@ -7,13 +8,14 @@ import { MyHobbyServiceService } from 'services/my-hobby-service.service';
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent implements OnDestroy {
-  hobbyList!: string[];
+  hobbyList!: hobby[];
 
   constructor(private hobbyService: MyHobbyServiceService) {
     this.hobbyList = this.hobbyService.getHobbyList();
   }
 
   ngOnDestroy(): void {
+    console.log(this.hobbyList.length);
     console.log('MyProfileComponent destroyed.');
   }
 }

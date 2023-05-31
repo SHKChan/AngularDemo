@@ -1,5 +1,8 @@
-
 <div>
-<p>my-profile work!</p>
-<h2>I am Felix, a juior webpage developer. And my top hobby is {{hobbyList[0]}}</h2>
+    <p>my-profile work!</p>
+    <h2>I am Felix, a juior webpage developer.</h2>
+    <h2 *ngIf="hobbyList.length > 0" 
+        [ngStyle]="{'color': hobbyList.length > 0 ? 'green' : 'red'}">
+        my selected hobby is {{hobbyList[0].name}}.
+    </h2>
 </div>

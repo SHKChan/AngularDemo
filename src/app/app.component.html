@@ -9,6 +9,6 @@
   <ng-component select="app-hobby-table"></ng-component> -->
 
   <!-- no matter what the sequence put here, will envetuall rendering base on what sequence inside container html -->
-  <app-hobby-table></app-hobby-table><br>
+  <app-hobby-table (selectedIndexEmitter)="selectHobby($event)"></app-hobby-table><br>
   <p>This is from ng-container.</p><br>
 </app-container><br>

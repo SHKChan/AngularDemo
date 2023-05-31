@@ -11,14 +11,18 @@ export class ContainerComponent implements AfterContentInit {
   isShown: boolean = true;
 
   ngAfterContentInit(): void {
-    if (this.hobbyComponent) {
-      this.hobbyComponent.hobbyList[0] = 'Video Game: Age of Empire';
+    if (this.hobbyComponent.hobbyList.length > 0) {
+      this.hobbyComponent.hobbyList[0] = {name: 'Video Games', example: 'War3', duration: 23, skillLevel: 4, isIndoor: true};
       this.hobbyComponent.printHobbyListInService();
     }
   }
 
-  toggle(): void {
+  hideOrShowProfile(): void {
     this.isShown = !this.isShown
     console.log(`Toggle in HobbyTableComponent. isShown = ${this.isShown}`);
+  }
+
+  adddHobby(): void {
+    this.hobbyComponent.hobbyList.push({name: this.hobbyComponent.name, example: this.hobbyComponent.example, duration: parseFloat(this.hobbyComponent.duration), skillLevel: parseInt(this.hobbyComponent.skillLevel), isIndoor: Boolean(this.hobbyComponent.isIndoor)});
   }
 }
