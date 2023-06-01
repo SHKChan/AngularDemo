@@ -8,19 +8,34 @@ import { ContainerComponent } from './container/container.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { HobbyTableComponent } from './hobby-table/hobby-table.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppNavComponent } from './app-nav/app-nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { PageFourOfourComponent } from './page-four-ofour/page-four-ofour.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContainerComponent,
     MyProfileComponent, 
-    HobbyTableComponent
+    HobbyTableComponent, AppNavComponent, PageFourOfourComponent, BookingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

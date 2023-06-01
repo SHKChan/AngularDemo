@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { hobby } from 'services/hobby';
 import { MyHobbyServiceService } from 'services/my-hobby-service.service';
@@ -19,6 +19,8 @@ export class HobbyTableComponent implements OnInit, OnDestroy {
   hobbyList: hobby[] = [];
   private hobbyDataSubscription!: Subscription;
 
+  @Output()  isShownEvent = new EventEmitter<boolean>();
+
   constructor(private myHobbyService: MyHobbyServiceService) {
   }
 
@@ -30,6 +32,7 @@ export class HobbyTableComponent implements OnInit, OnDestroy {
   getIndex(): number {
     return this.selectedIndex;
   }
+  
   setIndex(index: number): void {
     this.selectedIndex = index;
     this.myHobbyService.updateHobbyData(this.hobbyList, index);
@@ -41,6 +44,7 @@ export class HobbyTableComponent implements OnInit, OnDestroy {
     }
     return this.hobbyList[0];
   }
+
   setItem(item: hobby, index: number): void {
 
     if (index < this.hobbyList.length) {
@@ -51,7 +55,6 @@ export class HobbyTableComponent implements OnInit, OnDestroy {
     }
     this.myHobbyService.updateHobbyData(this.hobbyList, this.selectedIndex);
   }
-
 
   ngOnInit(): void {
     this.hobbyDataSubscription = this.myHobbyService.getHobbyData().subscribe(([list, index]) => {
@@ -64,5 +67,20 @@ export class HobbyTableComponent implements OnInit, OnDestroy {
   printHobbyListInService(): void {
     // Use the list and index values in your component
     console.log(`Hobby List inside Service: ${this.hobbyList[this.selectedIndex].name}, and the Selected Index: ${this.selectedIndex}`);
+  }
+
+  hideOrShowProfile(): void {
+    this.isShownEvent.emit();
+  }
+
+  adddHobby(): void {
+    this.setItem({name: this.name, example: this.example, duration: parseFloat(this.duration), skillLevel: parseInt(this.skillLevel), isIndoor: Boolean(this.isIndoor)}, this.hobbyList.length);
+  }
+
+  ngAfterContentInit(): void {
+    if (this.hobbyList.length > 0) {
+      this.setItem({name: 'Video Games', example: 'War3', duration: 23, skillLevel: 4, isIndoor: true}, 0);
+      this.printHobbyListInService();
+    }
   }
 }

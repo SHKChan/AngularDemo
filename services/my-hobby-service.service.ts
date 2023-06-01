@@ -9,6 +9,7 @@ export class MyHobbyServiceService {
   private hobbyList: hobby[] = [];
   private selectedIndex: number = 0;
   private hobbyDataSubject: BehaviorSubject<[hobby[], number]> = new BehaviorSubject<[hobby[], number]>([this.hobbyList, this.selectedIndex]);
+  
   hobbyDataObservable$: Observable<[hobby[], number]> = this.hobbyDataSubject.asObservable();
 
   constructor() {

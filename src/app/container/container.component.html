@@ -1,7 +1,8 @@
 <p>container work!</p>
-<ng-content select="app-my-profile" *ngIf="isShown"></ng-content><br>
-<ng-content></ng-content>
-<ng-content select="app-hobby-table"></ng-content>
+<!-- <ng-content select="app-my-profile" *ngIf="isShown"></ng-content><br>
+<ng-content select="app-hobby-table"></ng-content> -->
 
-<button (click)="hideOrShowProfile()">Hide/Shown My Profile</button>
-<button (click)="adddHobby()">Add a Hobby</button>
+<!-- container -->
+<!-- no matter what the sequence put here, will envetuall rendering base on what sequence inside container html -->
+<app-my-profile *ngIf="isShown"></app-my-profile><br>
+<app-hobby-table (isShownEvent)="isShown = !isShown"></app-hobby-table><br>
