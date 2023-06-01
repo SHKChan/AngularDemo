@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { hobby } from 'services/hobby';
 import { MyHobbyServiceService } from 'services/my-hobby-service.service';
 
@@ -7,19 +8,21 @@ import { MyHobbyServiceService } from 'services/my-hobby-service.service';
   templateUrl: './my-profile.component.html',
   styleUrls: ['./my-profile.component.css']
 })
-export class MyProfileComponent implements OnInit {
+export class MyProfileComponent implements OnInit, OnDestroy {
   hobbyList: hobby[] = [];
   selectedIndex: number = 0;
+  private hobbyDataSubscription!: Subscription;
 
   constructor(private myHobbyService: MyHobbyServiceService) {
   }
   ngOnInit(): void {
-    this.myHobbyService.getHobbyData().subscribe(([list, index]) => {
-      // Use the list and index values in your component
+    this.hobbyDataSubscription = this.myHobbyService.hobbyDataObservable$.subscribe(([list, index]) => {
       this.hobbyList = list;
       this.selectedIndex = index;
-    });
+    })
+  }
 
-    console.log(`Hobby List inside My-Profile Component: ${this.hobbyList}, and the Selected Index: ${this.selectedIndex}`);
+  ngOnDestroy(): void {
+    this.hobbyDataSubscription.unsubscribe();
   }
 }

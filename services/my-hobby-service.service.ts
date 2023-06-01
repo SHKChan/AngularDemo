@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { hobby } from './hobby';
-import { Observable, Subject, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,8 @@ import { Observable, Subject, of } from 'rxjs';
 export class MyHobbyServiceService {
   private hobbyList: hobby[] = [];
   private selectedIndex: number = 0;
-  private hobbyServiceSubject: Subject<{ list: hobby[], index: number }> = new Subject<{ list: hobby[], index: number }>();
+  private hobbyDataSubject: BehaviorSubject<[hobby[], number]> = new BehaviorSubject<[hobby[], number]>([this.hobbyList, this.selectedIndex]);
+  hobbyDataObservable$: Observable<[hobby[], number]> = this.hobbyDataSubject.asObservable();
 
   constructor() {
     this.hobbyList = [
@@ -30,9 +31,6 @@ export class MyHobbyServiceService {
     // update data
     this.hobbyList = list;
     this.selectedIndex = index;
-  }
-
-  getHobbyDataRaw(): hobby[] {
-    return this.hobbyList;
+    this.hobbyDataSubject.next([this.hobbyList, this.selectedIndex]);
   }
 }
