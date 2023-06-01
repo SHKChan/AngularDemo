@@ -3,12 +3,9 @@
 <!-- container -->
 <app-container>
   <!-- in container html -->
-  <!-- <p>container work!</p>
-  <ng-content></ng-content>
-  <ng-component select="app-my-profile"></ng-component>
-  <ng-component select="app-hobby-table"></ng-component> -->
+  <!-- <p>container work!</p> -->
 
   <!-- no matter what the sequence put here, will envetuall rendering base on what sequence inside container html -->
-  <app-hobby-table (selectedIndexEmitter)="selectHobby($event)"></app-hobby-table><br>
-  <p>This is from ng-container.</p><br>
+  <app-my-profile></app-my-profile><br>
+  <app-hobby-table></app-hobby-table><br>
 </app-container><br>

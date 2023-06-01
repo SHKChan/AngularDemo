@@ -1,5 +1,4 @@
 <p>hobby-table works!</p><br>
-
 <div *ngIf="hobbyList.length > 0">
     <h2>My Top 5 Hobbies</h2>
     <!-- <ul>
@@ -26,7 +25,7 @@
             <td>{{hobby.skillLevel}}</td>
             <td>{{hobby.isIndoor}}</td>
             <td><button class="btn btn-primary" 
-                (click)="selectedHobby(i)">
+                (click)="setIndex(i)">
                 Select
             </button></td>
         </tr>
@@ -40,5 +39,4 @@
         </tr>
     </table>
 </div><br>
-
 <p *ngIf="hobbyList.length === 0">No hobbies found.</p>

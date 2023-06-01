@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, ViewChild } from '@angular/core';
 import { HobbyTableComponent } from '../hobby-table/hobby-table.component';
 
 @Component({
@@ -8,11 +8,12 @@ import { HobbyTableComponent } from '../hobby-table/hobby-table.component';
 })
 export class ContainerComponent implements AfterContentInit {
   @ContentChild(HobbyTableComponent) hobbyComponent!: HobbyTableComponent;
+
   isShown: boolean = true;
 
   ngAfterContentInit(): void {
     if (this.hobbyComponent.hobbyList.length > 0) {
-      this.hobbyComponent.hobbyList[0] = {name: 'Video Games', example: 'War3', duration: 23, skillLevel: 4, isIndoor: true};
+      this.hobbyComponent.setItem({name: 'Video Games', example: 'War3', duration: 23, skillLevel: 4, isIndoor: true}, 0);
       this.hobbyComponent.printHobbyListInService();
     }
   }
@@ -23,6 +24,6 @@ export class ContainerComponent implements AfterContentInit {
   }
 
   adddHobby(): void {
-    this.hobbyComponent.hobbyList.push({name: this.hobbyComponent.name, example: this.hobbyComponent.example, duration: parseFloat(this.hobbyComponent.duration), skillLevel: parseInt(this.hobbyComponent.skillLevel), isIndoor: Boolean(this.hobbyComponent.isIndoor)});
+    this.hobbyComponent.setItem({name: this.hobbyComponent.name, example: this.hobbyComponent.example, duration: parseFloat(this.hobbyComponent.duration), skillLevel: parseInt(this.hobbyComponent.skillLevel), isIndoor: Boolean(this.hobbyComponent.isIndoor)}, this.hobbyComponent.hobbyList.length);
   }
 }

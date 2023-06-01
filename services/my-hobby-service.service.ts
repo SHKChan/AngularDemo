@@ -1,26 +1,38 @@
 import { Injectable } from '@angular/core';
 import { hobby } from './hobby';
+import { Observable, Subject, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MyHobbyServiceService {
-  hobbyList: hobby[] = [];
-  selectedIndex: number = 0;
-  
+  private hobbyList: hobby[] = [];
+  private selectedIndex: number = 0;
+  private hobbyServiceSubject: Subject<{ list: hobby[], index: number }> = new Subject<{ list: hobby[], index: number }>();
+
   constructor() {
     this.hobbyList = [
-      {name: 'Video Games', example: 'AOE4', duration: 23.5, skillLevel: 4, isIndoor: true},
-      {name: 'Animate', example: 'Fate Stay Night', duration: 26.2, skillLevel: 2, isIndoor: true},
-      {name:'Ping Pong', example: 'Ping Pong', duration: 22.4, skillLevel: 2, isIndoor: false},
-      {name:'Sci-Fi Novel', example: 'The Three-Body Problem', duration: 16.0, skillLevel: 2, isIndoor: true},
-      {name:'Listening to Music', example: 'Never Gonna Give You Up', duration: 13.3, skillLevel: 2, isIndoor: true},
+      { name: 'Video Games', example: 'AOE4', duration: 23.5, skillLevel: 4, isIndoor: true },
+      { name: 'Animate', example: 'Fate Stay Night', duration: 26.2, skillLevel: 2, isIndoor: true },
+      { name: 'Ping Pong', example: 'Ping Pong', duration: 22.4, skillLevel: 2, isIndoor: false },
+      { name: 'Sci-Fi Novel', example: 'The Three-Body Problem', duration: 16.0, skillLevel: 2, isIndoor: true },
+      { name: 'Listening to Music', example: 'Never Gonna Give You Up', duration: 13.3, skillLevel: 2, isIndoor: true }
     ];
     // only one instance for global service
     console.log('Hello MyHobbyServiceService Provider');
   }
 
-  getHobbyList(): hobby[] {
+  getHobbyData(): Observable<[hobby[], number]> {
+    return of([this.hobbyList, this.selectedIndex]);
+  }
+
+  updateHobbyData(list: hobby[], index: number): void {
+    // update data
+    this.hobbyList = list;
+    this.selectedIndex = index;
+  }
+
+  getHobbyDataRaw(): hobby[] {
     return this.hobbyList;
   }
 }
