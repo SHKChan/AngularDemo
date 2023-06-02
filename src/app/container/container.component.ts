@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class ContainerComponent {
   isShown : boolean = true;
+
   constructor() {
+  }
+
+  showOrHide() : void {
+    this.isShown = !this.isShown
   }
 }

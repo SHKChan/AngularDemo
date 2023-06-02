@@ -5,4 +5,6 @@
 <!-- container -->
 <!-- no matter what the sequence put here, will envetuall rendering base on what sequence inside container html -->
 <app-my-profile *ngIf="isShown"></app-my-profile><br>
-<app-hobby-table (isShownEvent)="isShown = !isShown"></app-hobby-table><br>
+<app-hobby-table (isShownEvent)="showOrHide()"></app-hobby-table><br>
+
+<br><app-test-parent></app-test-parent>

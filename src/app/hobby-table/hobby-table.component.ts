@@ -64,11 +64,6 @@ export class HobbyTableComponent implements OnInit, OnDestroy {
     });
   }
 
-  printHobbyListInService(): void {
-    // Use the list and index values in your component
-    console.log(`Hobby List inside Service: ${this.hobbyList[this.selectedIndex].name}, and the Selected Index: ${this.selectedIndex}`);
-  }
-
   hideOrShowProfile(): void {
     this.isShownEvent.emit();
   }
@@ -80,7 +75,6 @@ export class HobbyTableComponent implements OnInit, OnDestroy {
   ngAfterContentInit(): void {
     if (this.hobbyList.length > 0) {
       this.setItem({name: 'Video Games', example: 'War3', duration: 23, skillLevel: 4, isIndoor: true}, 0);
-      this.printHobbyListInService();
     }
   }
 }
