@@ -34,4 +34,9 @@ export class MyHobbyServiceService {
     this.selectedIndex = index;
     this.hobbyDataSubject.next([this.hobbyList, this.selectedIndex]);
   }
+
+  addHobby(hobby: hobby): void {
+    this.hobbyList.push(hobby);
+    this.hobbyDataSubject.next([this.hobbyList, this.selectedIndex]);
+  }
 }

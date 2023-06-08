@@ -21,13 +21,14 @@ import { TestChildComponent } from './test-child/test-child.component';
 import { TestParentComponent } from './test-parent/test-parent.component';
 import { TestChildContentComponent } from './test-child-content/test-child-content.component';
 import { TestParentContentComponent } from './test-parent-content/test-parent-content.component';
+import { AddHobbyComponent } from './add-hobby/add-hobby.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContainerComponent,
     MyProfileComponent, 
-    HobbyTableComponent, AppNavComponent, PageFourOfourComponent, BookingComponent, TestChildComponent, TestParentComponent, TestChildContentComponent, TestParentContentComponent
+    HobbyTableComponent, AppNavComponent, PageFourOfourComponent, BookingComponent, TestChildComponent, TestParentComponent, TestChildContentComponent, TestParentContentComponent, AddHobbyComponent
   ],
   imports: [
     BrowserModule,
