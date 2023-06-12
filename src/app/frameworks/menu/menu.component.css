@@ -1,0 +1,29 @@
+.left-navbar {
+    /* sets the display mode of the element to flex, which allows you to use flexbox layout styles to position and size child elements. */
+    display: flex;
+    /* stacks child elements vertically. */
+    flex-direction: column;
+    background: linear-gradient(0.25turn, #007D84, #007484);
+    height: 100vh;
+    width: 65px;
+    z-index: 1000;
+    position: static;
+    transition: width 0.5s linear;
+    overflow: hidden;
+    color: #fff;
+}
+
+.menu-container {
+    transition: all 0.85s ease-in-out;
+}
+
+.brand {
+    --color: #fff;
+    color: #c5bd00;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 105px;
+    width: 300px;
+    display: block;
+}

@@ -1,0 +1,50 @@
+<!-- 
+justify-content-start: Bootstrap class, aligns the contents of the container to the left.
+-->
+<nav class="justify-content-start left-navbar menu-container">
+    <!-- 
+    d-flex:Bootstrap class, sets the display property of the element to flex.
+    justify-content-between: Bootstrap class, positions the child elements of the container with equal space between them.
+    w-100: Bootstrap class, sets the width of the element to 100%.
+     -->
+    <div class="d-flex justify-content-between w-100"
+         style="height: 65px">
+        <div class="brand">
+
+            <img src="/assets/angular.svg"
+                 width="52"
+                 height="52"
+                 style="margin-top: 0px; margin-left: 5px;" />
+        </div>
+    </div>
+    <!-- 
+        nav: Bootstrap class, create a list of links with basic styling.
+        navbar-nav: Bootstrap class, create a navigation menu.
+         -->
+    <ul class="nav navbar-nav">
+
+        <li *ngFor="let m of menu"
+            class="nav-item has-label"
+            title="{{m.item}}"
+            (mouseover)="onMouseHover(m)"
+            (mouseout)="onMouseOut(m)"
+            (click)="onClick(m.path)">
+
+            <a class="nav-link"
+               title="{{m.item}}">
+
+                <i class="fa-light fa-circle-dot" ></i>
+
+                <!-- <span class="ms-3" *ngIf="m.isHover"></span> -->
+
+                <img class="custom-svg "
+                     src="/assets/circle-dot-regular.svg"
+                     width="52"
+                     height="52"
+                     style="margin-top: 0px; margin-left: 5px;" />
+
+                <span class="ms-3" *ngIf="m.isHover">{{m.item}}</span>
+            </a>
+        </li>
+    </ul>
+</nav>

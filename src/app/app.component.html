@@ -1,7 +1,29 @@
-<!-- <h1> This Felix's Angular Study Demo</h1><br> -->
+<div class="main-container">
+    <app-menu></app-menu>
 
-<!-- <a [routerLink]="'container'">|__________Home Page__________|</a>
-<a [routerLink]="'hobby-table'">__________Hobby Table__________|</a>
-<a [routerLink]="'my-profile'">__________My Profile__________|</a> -->
-<!-- introduce the routing table here -->
-<app-app-nav></app-app-nav>
+    <div class="main-content">
+
+        <!-- example for mat-toolbar -->
+        <mat-toolbar class="main-header">
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">Library</li>
+                <li class="breadcrumb-item">Data</li>
+            </ol>
+
+            <span class="text-end">
+                Angular Study Demo
+            </span>
+
+        </mat-toolbar>
+
+        <div class="sub-container">
+
+            <!--  load components into the router-outlet element based on the current route. The router-outlet is a placeholder -->
+            <router-outlet></router-outlet>
+            <!-- inside each component to render sub-menu and content -->
+
+        </div>
+    </div>
+</div>
