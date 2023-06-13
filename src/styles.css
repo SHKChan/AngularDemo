@@ -6,6 +6,25 @@ Setting up Font-Awesome: 'npm install @fortawesome/fontawesome-free'
 */
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
+.reddebug {
+    border: 1px solid red;
+}
+
+/*  
+<button class="btn btn-icon btn-outline-primary">
+  <i class="fas fa-search"></i>
+  Search
+</button>
+*/
+button i {
+    margin-right: 5px;
+    /* add some spacing between the icon and text */
+}
+
+button.btn-icon {
+    padding: 5px 10px;
+    /* adjust padding to fit the icon */
+}
 
 html,
 body {
